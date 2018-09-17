@@ -27,6 +27,21 @@ class LoginForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('The form was submitted.');
+
+    let databody = {
+      "username": this.state.username,
+      "password": this.state.password
+  }
+
+    fetch('api/signup', {
+            method: 'POST',
+            body: JSON.stringify(databody),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(res => res.json())
+        .then(data => console.log(data)); 
   }
 
   // loginForm = 
